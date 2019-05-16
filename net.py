@@ -6,12 +6,14 @@ set_random_seed(2)
 #Importing Libraries for data preparation
 import pandas as pd
 import numpy as np
-
+import datetime
+import time
 #Read Necessary files
 fullData = pd.read_csv("dataset.csv")
 
 from keras import Sequential
 from keras.layers import Dense, BatchNormalization
+from keras.callbacks import TensorBoard, EarlyStopping
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import MinMaxScaler
@@ -75,9 +77,12 @@ model.summary()
 # Compile model
 model.compile(loss= "binary_crossentropy" , optimizer="adam", metrics=["accuracy"])
 
-model.fit(train_x, train_y, epochs=1)
+ts = time.time()
+time = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 
+tensorboard = TensorBoard(log_dir='./tb/' + time, histogram_freq=0, write_graph=True, write_images=True)
 
-pred= model.predict_classes(test_x)
-score = accuracy_score(test_y,pred)
-print (score)
+stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
+
+model.fit(train_x, train_y, epochs=200000, validation_data=(test_x, test_y), callbacks=[tensorboard, stop])
+
