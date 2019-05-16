@@ -12,13 +12,13 @@ class Prepare:
 		self._one_hot()
 
 	def _norm(self, data):
-				data[0] = minmax_scale(data[0])		#age
+		data[0] = minmax_scale(data[0])		#age
 		data[5] = minmax_scale(data[5])		#balance
 		data[11] = minmax_scale(data[11])	#campaign
 		data[12] = minmax_scale(data[12])	#pdays
 		data[13] = minmax_scale(data[13])	#previous
-		data[0] = preprocessing.normalize([data[0]])		# age
-		data[5] = preprocessing.normalize([data[5]])		# balance
+		data[0] = preprocessing.normalize([data[0]])	# age
+		data[5] = preprocessing.normalize([data[5]])	# balance
 		data[12] = preprocessing.normalize([data[11]])	# campaign
 		data[13] = preprocessing.normalize([data[12]])	# pdays
 		data[14] = preprocessing.normalize([data[13]])	# previous
