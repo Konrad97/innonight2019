@@ -14,10 +14,9 @@ class Prepare:
 	def _norm(self, data):
 		data[0] = preprocessing.normalize([data[0]])		# age
 		data[5] = preprocessing.normalize([data[5]])		# balance
-		data[11] = preprocessing.normalize([data[11]])	# duration
-		data[12] = preprocessing.normalize([data[12]])	# campaign
-		data[13] = preprocessing.normalize([data[13]])	# pdays
-		data[14] = preprocessing.normalize([data[14]])	# previous
+		data[12] = preprocessing.normalize([data[11]])	# campaign
+		data[13] = preprocessing.normalize([data[12]])	# pdays
+		data[14] = preprocessing.normalize([data[13]])	# previous
 
 	def _binary(self, data):
 		self._binary_para(self,data,6) #default
@@ -31,12 +30,8 @@ class Prepare:
 				data[col][i]=1
 
 
-	def _one_hot(self, data):
-		#data = [1, 3, 2, 0, 3, 2, 2, 1, 0, 1]
-=======
 	def _one_hot(self):
 		data = [['married', 'single', 'divorced', 'married', 'married', 'single', 'single', 'single', 'married', 'single'],['secondary', 'secondary','primary', 'secondary','primary', 'tertiary', 'primary', 'unknown']]
->>>>>>> master
 		#data = array(data)
 
 		data1 = array(data[0])
