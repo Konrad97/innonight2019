@@ -1,3 +1,5 @@
+import numpy as np
+from sklearn import preprocessing
 from numpy import array
 from numpy import argmax
 from keras.utils import to_categorical
@@ -9,7 +11,13 @@ class Prepare:
 		#self._binary(self, data)
 		self._one_hot()
 
-	#def _norm(self, data):
+	def _norm(self, data):
+		data[0] = preprocessing.normalize([data[0]])		# age
+		data[5] = preprocessing.normalize([data[5]])		# balance
+		data[11] = preprocessing.normalize([data[11]])	# duration
+		data[12] = preprocessing.normalize([data[12]])	# campaign
+		data[13] = preprocessing.normalize([data[13]])	# pdays
+		data[14] = preprocessing.normalize([data[14]])	# previous
 
 	#def _binary(self, data):
 
