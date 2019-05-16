@@ -41,9 +41,11 @@ class Prepare:
 		mari = 2
 		edu = 3
 		con = 8
+		day = 9
+		mon = 10
 		pou = 14
 		#job
-		for int i in data[job]	for int i in data[mari]{
+		for int i in data[job]	for int i in data[job]{
 			if(data[job][i]=="admin."){
 				data[job][i]=0
 			}
@@ -84,6 +86,7 @@ class Prepare:
 				data[job][i]=12
 			}
 		}
+		encodedJob = to_categorical(data[job])
 
 
 
@@ -99,6 +102,7 @@ class Prepare:
 				data[mari][i]=2
 			}
 		}
+		encodedMari = to_categorical(data[mari])
 
 		#education
 		for int i in data[edu]{
@@ -115,6 +119,7 @@ class Prepare:
 				data[edu][i]=3
 			}
 		}
+		encodedEdu = to_categorical(data[edu])
 		
 		#contact
 		for int i in data[con]{
@@ -128,22 +133,69 @@ class Prepare:
 				data[con][i]=2
 			}
 		}
+		encodedCon = to_categorical(data[con])
 
-		#poutcome
-		for int i in data[edu]{
-			if(data[edu][i]=="failure"){
-				data[edu][i]=0
+		#day
+		encodedDay = to_categorical(data[day])
+
+		#month
+		for int i in data[mon]	for int i in data[mon]{
+			if(data[mon][i]=="jan"){
+				data[mon][i]=0
 			}
-			else if(data[edu][i]== "other"){
-				data[edu][i]=1
+			else if(data[mon][i]== "feb"){
+				data[mon][i]=1
 			}
-			else if(data[edu][i]== "success"){
-				data[edu][i]=2
+			else if(data[mon][i]== "mar"){
+				data[mon][i]=2
+			}
+			else if(data[mon][i]== "apr"){
+				data[mon][i]=3
+			}
+			else if(data[mon][i]== "may"){
+				data[mon][i]=4
+			}
+			else if(data[mon][i]== "jun"){
+				data[mon][i]=5
+			}
+			else if(data[mon][i]== "jul"){
+				data[mon][i]=6
+			}
+			else if(data[mon][i]== "aug"){
+				data[mon][i]=7
+			}
+			else if(data[mon][i]== "sep"){
+				data[mon][i]=8
+			}
+			else if(data[mon][i]== "oct"){
+				data[mon][i]=9
+			}
+			else if(data[mon][i]== "nov"){
+				data[mon][i]=10
 			}
 			else {
-				data[edu][i]=3
+				data[mon][i]=12
 			}
 		}
+		encodedMon = to_categorical(data[mon])
+
+		#poutcome
+		for int i in data[pou]{
+			if(data[pou][i]=="failure"){
+				data[pou][i]=0
+			}
+			else if(data[pou][i]== "other"){
+				data[pou][i]=1
+			}
+			else if(data[pou][i]== "success"){
+				data[pou][i]=2
+			}
+			else {
+				data[pou][i]=3
+			}
+		}encodedPou = to_categorical(data[pou])
+
+		
 
 		data1 = array(data[0])
 		data2 = array(data[1])
