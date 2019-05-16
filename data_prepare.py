@@ -19,10 +19,18 @@ class Prepare:
 		data[13] = preprocessing.normalize([data[13]])	# pdays
 		data[14] = preprocessing.normalize([data[14]])	# previous
 
-	#def _binary(self, data):
+	def _binary(self, data):
+		self._binary_para(self,data,6) #default
+		self._binary_para(self,data,8) #housing
+		self._binary_para(self,data,9) #loan
+	def _binary_para(self,data,col):
+		for int i in data[col]	# is yes or no
+			if data[col][i] == "no"
+				data[col][i]=0
+			else
+				data[col][i]=1
 
-<<<<<<< HEAD
-#testen
+
 	def _one_hot(self, data):
 		#data = [1, 3, 2, 0, 3, 2, 2, 1, 0, 1]
 =======
