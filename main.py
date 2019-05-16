@@ -7,7 +7,7 @@ def main():
 
   data = loader.load_csv('dataset')
   prepare.prepare(data)
-  print(data)
+  #print(data)
   
 if __name__ == "__main__":
   main()

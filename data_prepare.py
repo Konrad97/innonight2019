@@ -38,12 +38,11 @@ class Prepare:
 				data[col][i]=1
 
 	def _one_hot(self, data):
-		#data = [['married', 'single', 'divorced', 'married', 'married', 'single', 'single', 'single', 'married', 'single'],['secondary', 'secondary','primary', 'secondary','primary', 'tertiary', 'primary', 'unknown']]
 		job = 1
 		mari = 2
 		edu = 3
 		con = 8
-		day = 9
+		#day = 9
 		mon = 10
 		pou = 14
 		#job
@@ -87,7 +86,7 @@ class Prepare:
 			else :
 				data[job][i]=12
 			
-		#encodedJob = self._encode(data[job])
+		self._encode(data, job, 13)
 
 		#marital
 		for  i in range(len(data[mari])):
@@ -100,7 +99,7 @@ class Prepare:
 			else :
 				data[mari][i]=2
 			
-		#encodedMari = self._encode(data[mari])
+		self._encode(data, mari, 3)
 
 		#education
 		for i in range(len(data[edu])):
@@ -116,7 +115,7 @@ class Prepare:
 			else :
 				data[edu][i]=3
 			
-		encodedEdu = self._encode(data[edu])
+		self._encode(data, edu, 4)
 		
 		#contact
 		for i in range(len(data[con])):
@@ -190,17 +189,14 @@ class Prepare:
 			
 		#encodedPou = self._encode(data[pou])
 
-
-		data1 = array(data[0])
-		data2 = array(data[1])
-
-	def _encode(self, data):
+	def _encode(self, data, coloum, max):
 		# one hot encode
-		onehot_encoded = list()
-		for value in data:
-			zahl = [0 for _ in range(32)]
+		i=0
+		for value in data[coloum]:
+			zahl = [0 for _ in range(max)]
 			zahl[value] = 1
-			onehot_encoded.append(zahl)
-		print(onehot_encoded)
+			data[coloum][i] = zahl
+			i= i+1
+		print(data)
 
 		
