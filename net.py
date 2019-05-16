@@ -7,6 +7,7 @@ set_random_seed(2)
 import pandas as pd
 import numpy as np
 import datetime
+import os
 import time
 #Read Necessary files
 fullData = pd.read_csv("dataset.csv")
@@ -65,22 +66,22 @@ print(fullData)
 train_x, test_x, train_y, test_y = train_test_split(fullData, res, test_size=0.2, random_state=42, shuffle=True)
 
 model = Sequential()
-model.add(Dense(100, input_dim=len(fullData[0]), activation= "relu"))
+model.add(Dense(40, input_dim=len(fullData[0]), activation= "relu"))
 model.add(BatchNormalization())
-model.add(Dense(100, activation= "relu"))
+model.add(Dense(40, activation= "relu"))
 model.add(BatchNormalization())
-model.add(Dense(50, activation= "relu"))
-model.add(BatchNormalization())
+# model.add(Dense(50, activation= "relu"))
+# model.add(BatchNormalization())
 model.add(Dense(1, activation= "sigmoid"))
 model.summary()
 
 # Compile model
-model.compile(loss= "binary_crossentropy" , optimizer="adam", metrics=["accuracy"])
+model.compile(loss= "binary_crossentropy" , optimizer="adagrad", metrics=["accuracy"])
 
 ts = time.time()
-time = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
+time = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H-%M-%S')
 
-tensorboard = TensorBoard(log_dir='./tb/' + time, histogram_freq=0, write_graph=True, write_images=True)
+tensorboard = TensorBoard(log_dir=os.path.join("tb", time), histogram_freq=0, write_graph=True, write_images=True)
 
 stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
 
