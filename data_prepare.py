@@ -24,10 +24,10 @@ class Prepare:
 		self._binary_para(self,data,8) #housing
 		self._binary_para(self,data,9) #loan
 	def _binary_para(self,data,col):
-		for int i in data[col]	# is yes or no
-			if data[col][i] == "no"
+		for int i in data[col]:	# is yes or no
+			if data[col][i] == "no" :
 				data[col][i]=0
-			else
+			else :
 				data[col][i]=1
 
 	def _one_hot(self):
@@ -40,155 +40,155 @@ class Prepare:
 		mon = 10
 		pou = 14
 		#job
-		for int i in data[job]	for int i in data[job]{
-			if(data[job][i]=="admin."){
+		for int i in data[job]	for int i in data[job]:
+			if(data[job][i]=="admin."):
 				data[job][i]=0
-			}
-			else if(data[job][i]== "blue-collar"){
+			
+			else if(data[job][i]== "blue-collar"):
 				data[job][i]=1
-			}
-			else if(data[job][i]== "entrepreneur"){
+			
+			else if(data[job][i]== "entrepreneur"):
 				data[job][i]=2
-			}
-			else if(data[job][i]== "housemaid"){
+			
+			else if(data[job][i]== "housemaid"):
 				data[job][i]=3
-			}
-			else if(data[job][i]== "management"){
+			
+			else if(data[job][i]== "management"):
 				data[job][i]=4
-			}
-			else if(data[job][i]== "retired"){
+			
+			else if(data[job][i]== "retired"):
 				data[job][i]=5
-			}
-			else if(data[job][i]== "self-employed"){
+			
+			else if(data[job][i]== "self-employed"):
 				data[job][i]=6
-			}
-			else if(data[job][i]== "services"){
+			
+			else if(data[job][i]== "services"):
 				data[job][i]=7
-			}
-			else if(data[job][i]== "student"){
+			
+			else if(data[job][i]== "student"):
 				data[job][i]=8
-			}
-			else if(data[job][i]== "technician"){
+			
+			else if(data[job][i]== "technician"):
 				data[job][i]=9
-			}
-			else if(data[job][i]== "services"){
+			
+			else if(data[job][i]== "services"):
 				data[job][i]=10
-			}
-			else if(data[job][i]== "unemployed"){
+			
+			else if(data[job][i]== "unemployed"):
 				data[job][i]=11
-			}
-			else {
+			
+			else :
 				data[job][i]=12
-			}
-		}
+			
+		
 		encodedJob = to_categorical(data[job])
 
 
 
 		#marital
-		for int i in data[mari]	for int i in data[mari]{
-			if(data[mari][i]=="married"){
+		for int i in data[mari]	for int i in data[mari]:
+			if(data[mari][i]=="married"):
 				data[mari][i]=0
-			}
-			else if(data[mari][i]== "single"){
+			
+			else if(data[mari][i]== "single"):
 				data[mari][i]=1
-			}
-			else {
+			
+			else :
 				data[mari][i]=2
-			}
-		}
+			
+		
 		encodedMari = to_categorical(data[mari])
 
 		#education
-		for int i in data[edu]{
-			if(data[edu][i]=="primary"){
+		for int i in data[edu]:
+			if(data[edu][i]=="primary"):
 				data[edu][i]=0
-			}
-			else if(data[edu][i]== "secundary"){
+			
+			else if(data[edu][i]== "secundary"):
 				data[edu][i]=1
-			}
-			else if(data[edu][i]== "tertiary"){
+			
+			else if(data[edu][i]== "tertiary"):
 				data[edu][i]=2
-			}
-			else {
+			
+			else :
 				data[edu][i]=3
-			}
-		}
+			
+		
 		encodedEdu = to_categorical(data[edu])
 		
 		#contact
-		for int i in data[con]{
-			if(data[con][i]=="telephone"){
+		for int i in data[con]:
+			if(data[con][i]=="telephone"):
 				data[con][i]=0
-			}
-			else if(data[con][i]== "cellular"){
+			
+			else if(data[con][i]== "cellular"):
 				data[con][i]=1
-			}
-			else {
+			
+			else :
 				data[con][i]=2
-			}
-		}
+			
+		
 		encodedCon = to_categorical(data[con])
 
 		#day
 		encodedDay = to_categorical(data[day])
 
 		#month
-		for int i in data[mon]	for int i in data[mon]{
-			if(data[mon][i]=="jan"){
+		for int i in data[mon]	for int i in data[mon]:
+			if(data[mon][i]=="jan"):
 				data[mon][i]=0
-			}
-			else if(data[mon][i]== "feb"){
+			
+			else if(data[mon][i]== "feb"):
 				data[mon][i]=1
-			}
-			else if(data[mon][i]== "mar"){
+			
+			else if(data[mon][i]== "mar"):
 				data[mon][i]=2
-			}
-			else if(data[mon][i]== "apr"){
+			
+			else if(data[mon][i]== "apr"):
 				data[mon][i]=3
-			}
-			else if(data[mon][i]== "may"){
+			
+			else if(data[mon][i]== "may"):
 				data[mon][i]=4
-			}
-			else if(data[mon][i]== "jun"){
+			
+			else if(data[mon][i]== "jun"):
 				data[mon][i]=5
-			}
-			else if(data[mon][i]== "jul"){
+			
+			else if(data[mon][i]== "jul"):
 				data[mon][i]=6
-			}
-			else if(data[mon][i]== "aug"){
+			
+			else if(data[mon][i]== "aug"):
 				data[mon][i]=7
-			}
-			else if(data[mon][i]== "sep"){
+			
+			else if(data[mon][i]== "sep"):
 				data[mon][i]=8
-			}
-			else if(data[mon][i]== "oct"){
+			
+			else if(data[mon][i]== "oct"):
 				data[mon][i]=9
-			}
-			else if(data[mon][i]== "nov"){
+			
+			else if(data[mon][i]== "nov"):
 				data[mon][i]=10
-			}
-			else {
+			
+			else :
 				data[mon][i]=12
-			}
-		}
+			
+		
 		encodedMon = to_categorical(data[mon])
 
 		#poutcome
-		for int i in data[pou]{
-			if(data[pou][i]=="failure"){
+		for int i in data[pou]:
+			if(data[pou][i]=="failure"):
 				data[pou][i]=0
-			}
-			else if(data[pou][i]== "other"){
+			
+			else if(data[pou][i]== "other"):
 				data[pou][i]=1
-			}
-			else if(data[pou][i]== "success"){
+			
+			else if(data[pou][i]== "success"):
 				data[pou][i]=2
-			}
-			else {
+			
+			else :
 				data[pou][i]=3
-			}
-		}encodedPou = to_categorical(data[pou])
+			
+		encodedPou = to_categorical(data[pou])
 
 		
 
