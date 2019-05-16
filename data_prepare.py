@@ -46,164 +46,158 @@ class Prepare:
 		#job
 		for int i in data[job]	for int i in data[job]:
 			if(data[job][i]=="admin."):
-				data[job][i]=a
+				data[job][i]=0
 			
 			else if(data[job][i]== "blue-collar"):
-				data[job][i]=b
+				data[job][i]=1
 			
 			else if(data[job][i]== "entrepreneur"):
-				data[job][i]=c
+				data[job][i]=2
 			
 			else if(data[job][i]== "housemaid"):
-				data[job][i]=d
+				data[job][i]=3
 			
 			else if(data[job][i]== "management"):
-				data[job][i]=e
+				data[job][i]=4
 			
 			else if(data[job][i]== "retired"):
-				data[job][i]=f
+				data[job][i]=5
 			
 			else if(data[job][i]== "self-employed"):
-				data[job][i]=g
+				data[job][i]=6
 			
 			else if(data[job][i]== "services"):
-				data[job][i]=h
+				data[job][i]=7
 			
 			else if(data[job][i]== "student"):
-				data[job][i]=i
+				data[job][i]=8
 			
 			else if(data[job][i]== "technician"):
-				data[job][i]=j
+				data[job][i]=9
 			
 			else if(data[job][i]== "services"):
-				data[job][i]=k
+				data[job][i]=10
 			
 			else if(data[job][i]== "unemployed"):
-				data[job][i]=l
+				data[job][i]=11
 			
 			else :
-				data[job][i]=m
+				data[job][i]=12
 			
-		encodedJob = to_categorical(data[job])
-
-
+		encodedJob = self._encode(data[job])
 
 		#marital
 		for int i in data[mari]	for int i in data[mari]:
 			if(data[mari][i]=="married"):
-				data[mari][i]=a
+				data[mari][i]=0
 			
 			else if(data[mari][i]== "single"):
-				data[mari][i]=b
+				data[mari][i]=1
 			
 			else :
-				data[mari][i]=c
+				data[mari][i]=2
 			
-		
-		encodedMari = to_categorical(data[mari])
+		encodedMari = self._encode(data[mari])
 
 		#education
 		for int i in data[edu]:
 			if(data[edu][i]=="primary"):
-				data[edu][i]=a
+				data[edu][i]=0
 			
 			else if(data[edu][i]== "secundary"):
-				data[edu][i]=b
+				data[edu][i]=1
 			
 			else if(data[edu][i]== "tertiary"):
-				data[edu][i]=c
+				data[edu][i]=2
 			
 			else :
-				data[edu][i]=d
+				data[edu][i]=3
 			
-		
-		encodedEdu = to_categorical(data[edu])
+		encodedEdu = self._encode(data[edu])
 		
 		#contact
 		for int i in data[con]:
 			if(data[con][i]=="telephone"):
-				data[con][i]=a
+				data[con][i]=0
 			
 			else if(data[con][i]== "cellular"):
-				data[con][i]=b
+				data[con][i]=1
 			
 			else :
-				data[con][i]=c
+				data[con][i]=2
 			
-		
-		encodedCon = to_categorical(data[con])
+		encodedCon = self._encode(data[con])
 
 		#day
-		encodedDay = to_categorical(data[day])
+		encodedDay = self._encode(data[day])
 
 		#month
 		for int i in data[mon]	for int i in data[mon]:
 			if(data[mon][i]=="jan"):
-				data[mon][i]=a
+				data[mon][i]=0
 			
 			else if(data[mon][i]== "feb"):
-				data[mon][i]=b
+				data[mon][i]=1
 			
 			else if(data[mon][i]== "mar"):
-				data[mon][i]=c
+				data[mon][i]=2
 			
 			else if(data[mon][i]== "apr"):
-				data[mon][i]=d
+				data[mon][i]=3
 			
 			else if(data[mon][i]== "may"):
-				data[mon][i]=e
+				data[mon][i]=4
 			
 			else if(data[mon][i]== "jun"):
-				data[mon][i]=f
+				data[mon][i]=5
 			
 			else if(data[mon][i]== "jul"):
-				data[mon][i]=g
+				data[mon][i]=6
 			
 			else if(data[mon][i]== "aug"):
-				data[mon][i]=h
+				data[mon][i]=7
 			
 			else if(data[mon][i]== "sep"):
-				data[mon][i]=i
+				data[mon][i]=8
 			
 			else if(data[mon][i]== "oct"):
-				data[mon][i]=j
+				data[mon][i]=9
 			
 			else if(data[mon][i]== "nov"):
-				data[mon][i]=k
+				data[mon][i]=10
 			
 			else :
-				data[mon][i]=l
+				data[mon][i]=11
 			
-		
-		encodedMon = to_categorical(data[mon])
+		encodedMon = self._encode(data[mon])
 
 		#poutcome
 		for int i in data[pou]:
 			if(data[pou][i]=="failure"):
-				data[pou][i]=a
+				data[pou][i]=0
 			
 			else if(data[pou][i]== "other"):
-				data[pou][i]=b
+				data[pou][i]=1
 			
 			else if(data[pou][i]== "success"):
-				data[pou][i]=c
+				data[pou][i]=2
 			
 			else :
-				data[pou][i]=d
+				data[pou][i]=3
 			
-		encodedPou = to_categorical(data[pou])
+		encodedPou = self._encode(data[pou])
 
 
 		data1 = array(data[0])
 		data2 = array(data[1])
 
-		zahlen = 'abcdefghijklmno'
+	def _encode(data):
 		# one hot encode
 		onehot_encoded = list()
-		for value in integer_encoded:
-			letter = [0 for _ in range(len(zahlen))]
-			letter[value] = 1
-			onehot_encoded.append(letter)
+		for value in data:
+			zahl = [0 for _ in range(32)]
+			zahl[value] = 1
+			onehot_encoded.append(zahl)
 		print(onehot_encoded)
 
 		
