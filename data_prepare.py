@@ -8,7 +8,7 @@ class Prepare:
 
 	def prepare(self, data):
 		self._norm(data)
-		#self._binary(self, data)
+		self._binary(data)
 		self._one_hot(data)
 
 	def _norm(self, data):
@@ -29,6 +29,7 @@ class Prepare:
 		self._binary_para(data,6) #default
 		self._binary_para(data,8) #housing
 		self._binary_para(data,9) #loan
+		self._binary_para(data, 15) #deposit
 
 	def _binary_para(self,data,col):
 		for  i in range(len(data[col])):	# is yes or no
@@ -42,7 +43,7 @@ class Prepare:
 		mari = 2
 		edu = 3
 		con = 8
-		#day = 9
+		day = 9
 		mon = 10
 		pou = 14
 		#job
@@ -128,10 +129,10 @@ class Prepare:
 			else :
 				data[con][i]=2
 			
-		#encodedCon = self._encode(data[con])
+		self._encode(data, con, 3)
 
 		#day
-		#encodedDay = self._encode(data[day])
+		self._encode(data, day, 32)
 
 		#month
 		for i in range(len(data[mon])):
@@ -171,7 +172,7 @@ class Prepare:
 			else :
 				data[mon][i]=11
 			
-		#encodedMon = self._encode(data[mon])
+		self._encode(data, mon, 12)
 
 		#poutcome
 		for  i in range(len(data[pou])):
@@ -187,7 +188,7 @@ class Prepare:
 			else :
 				data[pou][i]=3
 			
-		#encodedPou = self._encode(data[pou])
+		self._encode(data, pou, 4)
 
 	def _encode(self, data, coloum, max):
 		# one hot encode
@@ -195,8 +196,8 @@ class Prepare:
 		for value in data[coloum]:
 			zahl = [0 for _ in range(max)]
 			zahl[value] = 1
-			data[coloum][i] = zahl
+			data[coloum][i] = array(zahl)
 			i= i+1
-		print(data)
+		
 
 		
