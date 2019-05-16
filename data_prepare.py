@@ -47,7 +47,7 @@ class Prepare:
 		mon = 10
 		pou = 14
 		#job
-		for  i in data[job]:
+		for i in data[job]:
 			if(data[job][i]=="admin."):
 				data[job][i]=0
 			
