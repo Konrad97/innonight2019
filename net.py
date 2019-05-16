@@ -81,7 +81,7 @@ model.compile(loss= "binary_crossentropy" , optimizer="adagrad", metrics=["accur
 ts = time.time()
 time = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H-%M-%S')
 
-tensorboard = TensorBoard(log_dir=os.path.join("tb", time), histogram_freq=0, write_graph=True, write_images=True)
+tensorboard = TensorBoard(log_dir=os.path.join('tb', time), histogram_freq=0, write_graph=True, write_images=True)
 
 stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
 
