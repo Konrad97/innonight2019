@@ -20,33 +20,130 @@ class Prepare:
 		data[13] = preprocessing.normalize([data[13]])	# pdays
 		data[14] = preprocessing.normalize([data[14]])	# previous
 
-	#def _binary(self, data):
+	def _binary(self, data):
+		self._binary_para(self,data,6) #default
+		self._binary_para(self,data,8) #housing
+		self._binary_para(self,data,9) #loan
+	def _binary_para(self,data,col):
+		for int i in data[col]	# is yes or no
+			if data[col][i] == "no"
+				data[col][i]=0
+			else
+				data[col][i]=1
+
+
+	def _one_hot(self, data):
+		#data = [1, 3, 2, 0, 3, 2, 2, 1, 0, 1]
 
 	def _one_hot(self):
 		data = [['married', 'single', 'divorced', 'married', 'married', 'single', 'single', 'single', 'married', 'single'],['secondary', 'secondary','primary', 'secondary','primary', 'tertiary', 'primary', 'unknown']]
+		job = 1
+		mari = 2
+		edu = 3
+		con = 8
+		pou = 14
+		#job
+		for int i in data[job]	for int i in data[mari]{
+			if(data[job][i]=="admin."){
+				data[job][i]=0
+			}
+			else if(data[job][i]== "blue-collar"){
+				data[job][i]=1
+			}
+			else if(data[job][i]== "entrepreneur"){
+				data[job][i]=2
+			}
+			else if(data[job][i]== "housemaid"){
+				data[job][i]=3
+			}
+			else if(data[job][i]== "management"){
+				data[job][i]=4
+			}
+			else if(data[job][i]== "retired"){
+				data[job][i]=5
+			}
+			else if(data[job][i]== "self-employed"){
+				data[job][i]=6
+			}
+			else if(data[job][i]== "services"){
+				data[job][i]=7
+			}
+			else if(data[job][i]== "student"){
+				data[job][i]=8
+			}
+			else if(data[job][i]== "technician"){
+				data[job][i]=9
+			}
+			else if(data[job][i]== "services"){
+				data[job][i]=10
+			}
+			else if(data[job][i]== "unemployed"){
+				data[job][i]=11
+			}
+			else {
+				data[job][i]=12
+			}
+		}
+
+
 
 		#marital
-		for int i in data[2]{
-			data[2][i]=enum_marital(data[2][i])
+		for int i in data[mari]	for int i in data[mari]{
+			if(data[mari][i]=="married"){
+				data[mari][i]=0
+			}
+			else if(data[mari][i]== "single"){
+				data[mari][i]=1
+			}
+			else {
+				data[mari][i]=2
+			}
 		}
 
 		#education
-		for int i in data[2]{
-			if(data[2][i]=="primary"){
-				data[2][i]=0
+		for int i in data[edu]{
+			if(data[edu][i]=="primary"){
+				data[edu][i]=0
 			}
-			else if(data[2][i]== "secundary"){
-				data[2][i]=1
+			else if(data[edu][i]== "secundary"){
+				data[edu][i]=1
 			}
-			else if(data[2][i]== "tertiary"){
-				data[2][i]=2
+			else if(data[edu][i]== "tertiary"){
+				data[edu][i]=2
 			}
 			else {
-				data[2][i]=3
+				data[edu][i]=3
 			}
 		}
 		
-		#data = array(data)
+		#contact
+		for int i in data[con]{
+			if(data[con][i]=="telephone"){
+				data[con][i]=0
+			}
+			else if(data[con][i]== "cellular"){
+				data[con][i]=1
+			}
+			else {
+				data[con][i]=2
+			}
+		}
+
+		#poutcome
+		for int i in data[edu]{
+			if(data[edu][i]=="failure"){
+				data[edu][i]=0
+			}
+			else if(data[edu][i]== "other"){
+				data[edu][i]=1
+			}
+			else if(data[edu][i]== "success"){
+				data[edu][i]=2
+			}
+			else {
+				data[edu][i]=3
+			}
+		}
 
 		data1 = array(data[0])
 		data2 = array(data[1])
