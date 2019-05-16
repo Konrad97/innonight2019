@@ -28,7 +28,7 @@ class Prepare:
 		self._binary_para(self,data,8) #housing
 		self._binary_para(self,data,9) #loan
 	def _binary_para(self,data,col):
-		for int i in data[col]:	# is yes or no
+		for  i in data[col]:	# is yes or no
 			if data[col][i] == "no" :
 				data[col][i]=b
 			else :
@@ -44,41 +44,41 @@ class Prepare:
 		mon = 10
 		pou = 14
 		#job
-		for int i in data[job]	for int i in data[job]:
+		for  i in data[job]	for  i in data[job]:
 			if(data[job][i]=="admin."):
 				data[job][i]=0
 			
-			else if(data[job][i]== "blue-collar"):
+			elif(data[job][i]== "blue-collar"):
 				data[job][i]=1
 			
-			else if(data[job][i]== "entrepreneur"):
+			elif(data[job][i]== "entrepreneur"):
 				data[job][i]=2
 			
-			else if(data[job][i]== "housemaid"):
+			elif(data[job][i]== "housemaid"):
 				data[job][i]=3
 			
-			else if(data[job][i]== "management"):
+			elif(data[job][i]== "management"):
 				data[job][i]=4
 			
-			else if(data[job][i]== "retired"):
+			elif(data[job][i]== "retired"):
 				data[job][i]=5
 			
-			else if(data[job][i]== "self-employed"):
+			elif(data[job][i]== "self-employed"):
 				data[job][i]=6
 			
-			else if(data[job][i]== "services"):
+			elif(data[job][i]== "services"):
 				data[job][i]=7
 			
-			else if(data[job][i]== "student"):
+			elif(data[job][i]== "student"):
 				data[job][i]=8
 			
-			else if(data[job][i]== "technician"):
+			elif(data[job][i]== "technician"):
 				data[job][i]=9
 			
-			else if(data[job][i]== "services"):
+			elif(data[job][i]== "services"):
 				data[job][i]=10
 			
-			else if(data[job][i]== "unemployed"):
+			elif(data[job][i]== "unemployed"):
 				data[job][i]=11
 			
 			else :
@@ -87,11 +87,11 @@ class Prepare:
 		encodedJob = self._encode(data[job])
 
 		#marital
-		for int i in data[mari]	for int i in data[mari]:
+		for  i in data[mari]	for  i in data[mari]:
 			if(data[mari][i]=="married"):
 				data[mari][i]=0
 			
-			else if(data[mari][i]== "single"):
+			elif(data[mari][i]== "single"):
 				data[mari][i]=1
 			
 			else :
@@ -100,14 +100,14 @@ class Prepare:
 		encodedMari = self._encode(data[mari])
 
 		#education
-		for int i in data[edu]:
+		for i in data[edu]:
 			if(data[edu][i]=="primary"):
 				data[edu][i]=0
 			
-			else if(data[edu][i]== "secundary"):
+			elif(data[edu][i]== "secundary"):
 				data[edu][i]=1
 			
-			else if(data[edu][i]== "tertiary"):
+			elif(data[edu][i]== "tertiary"):
 				data[edu][i]=2
 			
 			else :
@@ -116,11 +116,11 @@ class Prepare:
 		encodedEdu = self._encode(data[edu])
 		
 		#contact
-		for int i in data[con]:
+		for i in data[con]:
 			if(data[con][i]=="telephone"):
 				data[con][i]=0
 			
-			else if(data[con][i]== "cellular"):
+			elif(data[con][i]== "cellular"):
 				data[con][i]=1
 			
 			else :
@@ -132,38 +132,38 @@ class Prepare:
 		encodedDay = self._encode(data[day])
 
 		#month
-		for int i in data[mon]	for int i in data[mon]:
+		for i in data[mon]	for  i in data[mon]:
 			if(data[mon][i]=="jan"):
 				data[mon][i]=0
 			
-			else if(data[mon][i]== "feb"):
+			elif(data[mon][i]== "feb"):
 				data[mon][i]=1
 			
-			else if(data[mon][i]== "mar"):
+			elif(data[mon][i]== "mar"):
 				data[mon][i]=2
 			
-			else if(data[mon][i]== "apr"):
+			elif(data[mon][i]== "apr"):
 				data[mon][i]=3
 			
-			else if(data[mon][i]== "may"):
+			elif(data[mon][i]== "may"):
 				data[mon][i]=4
 			
-			else if(data[mon][i]== "jun"):
+			elif(data[mon][i]== "jun"):
 				data[mon][i]=5
 			
-			else if(data[mon][i]== "jul"):
+			elif(data[mon][i]== "jul"):
 				data[mon][i]=6
 			
-			else if(data[mon][i]== "aug"):
+			elif(data[mon][i]== "aug"):
 				data[mon][i]=7
 			
-			else if(data[mon][i]== "sep"):
+			elif(data[mon][i]== "sep"):
 				data[mon][i]=8
 			
-			else if(data[mon][i]== "oct"):
+			elif(data[mon][i]== "oct"):
 				data[mon][i]=9
 			
-			else if(data[mon][i]== "nov"):
+			elif(data[mon][i]== "nov"):
 				data[mon][i]=10
 			
 			else :
@@ -172,14 +172,14 @@ class Prepare:
 		encodedMon = self._encode(data[mon])
 
 		#poutcome
-		for int i in data[pou]:
+		for  i in data[pou]:
 			if(data[pou][i]=="failure"):
 				data[pou][i]=0
 			
-			else if(data[pou][i]== "other"):
+			elif(data[pou][i]== "other"):
 				data[pou][i]=1
 			
-			else if(data[pou][i]== "success"):
+			elif(data[pou][i]== "success"):
 				data[pou][i]=2
 			
 			else :
