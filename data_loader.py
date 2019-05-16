@@ -2,7 +2,7 @@ import pandas as pd
 
 class Loader:
 
-	def __init__(self):
+	#def __init__(self):
 		
 	def load_csv(self, name: str):
 		# return raw array/objectarray
