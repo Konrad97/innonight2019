@@ -21,6 +21,7 @@ class Prepare:
 
 	def _binary(self, data):
 
+#testen
 	def _one_hot(self, data):
 		#data = [1, 3, 2, 0, 3, 2, 2, 1, 0, 1]
 		#data = array(data)
