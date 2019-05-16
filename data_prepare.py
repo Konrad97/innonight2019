@@ -44,7 +44,7 @@ class Prepare:
 		mon = 10
 		pou = 14
 		#job
-		for  i in data[job]	for  i in data[job]:
+		for i in data[job]:
 			if(data[job][i]=="admin."):
 				data[job][i]=0
 			
@@ -87,7 +87,7 @@ class Prepare:
 		encodedJob = self._encode(data[job])
 
 		#marital
-		for  i in data[mari]	for  i in data[mari]:
+		for  i in data[mari]:
 			if(data[mari][i]=="married"):
 				data[mari][i]=0
 			
@@ -132,7 +132,7 @@ class Prepare:
 		encodedDay = self._encode(data[day])
 
 		#month
-		for i in data[mon]	for  i in data[mon]:
+		for i in data[mon]:
 			if(data[mon][i]=="jan"):
 				data[mon][i]=0
 			
