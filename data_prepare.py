@@ -9,7 +9,7 @@ class Prepare:
 	def prepare(self, data):
 		self._norm(data)
 		#self._binary(self, data)
-		self._one_hot()
+		self._one_hot(data)
 
 	def _norm(self, data):
 		"""
@@ -31,14 +31,14 @@ class Prepare:
 		self._binary_para(data,9) #loan
 
 	def _binary_para(self,data,col):
-		for  i in data[col]:	# is yes or no
+		for  i in range(len(data[col])):	# is yes or no
 			if data[col][i] == "no" :
 				data[col][i]=0
 			else :
 				data[col][i]=1
 
-	def _one_hot(self):
-		data = [['married', 'single', 'divorced', 'married', 'married', 'single', 'single', 'single', 'married', 'single'],['secondary', 'secondary','primary', 'secondary','primary', 'tertiary', 'primary', 'unknown']]
+	def _one_hot(self, data):
+		#data = [['married', 'single', 'divorced', 'married', 'married', 'single', 'single', 'single', 'married', 'single'],['secondary', 'secondary','primary', 'secondary','primary', 'tertiary', 'primary', 'unknown']]
 		job = 1
 		mari = 2
 		edu = 3
@@ -47,7 +47,7 @@ class Prepare:
 		mon = 10
 		pou = 14
 		#job
-		for i in data[job]:
+		for i in range(len(data[job])):
 			if(data[job][i]=="admin."):
 				data[job][i]=0
 			
@@ -90,7 +90,7 @@ class Prepare:
 		#encodedJob = self._encode(data[job])
 
 		#marital
-		for  i in data[mari]:
+		for  i in range(len(data[mari])):
 			if(data[mari][i]=="married"):
 				data[mari][i]=0
 			
@@ -103,7 +103,7 @@ class Prepare:
 		#encodedMari = self._encode(data[mari])
 
 		#education
-		for i in data[edu]:
+		for i in range(len(data[edu])):
 			if(data[edu][i]=="primary"):
 				data[edu][i]=0
 			
@@ -119,7 +119,7 @@ class Prepare:
 		encodedEdu = self._encode(data[edu])
 		
 		#contact
-		for i in data[con]:
+		for i in range(len(data[con])):
 			if(data[con][i]=="telephone"):
 				data[con][i]=0
 			
@@ -135,7 +135,7 @@ class Prepare:
 		#encodedDay = self._encode(data[day])
 
 		#month
-		for i in data[mon]:
+		for i in range(len(data[mon])):
 			if(data[mon][i]=="jan"):
 				data[mon][i]=0
 			
@@ -175,7 +175,7 @@ class Prepare:
 		#encodedMon = self._encode(data[mon])
 
 		#poutcome
-		for  i in data[pou]:
+		for  i in range(len(data[pou])):
 			if(data[pou][i]=="failure"):
 				data[pou][i]=0
 			
@@ -194,7 +194,7 @@ class Prepare:
 		data1 = array(data[0])
 		data2 = array(data[1])
 
-	def _encode(data):
+	def _encode(self, data):
 		# one hot encode
 		onehot_encoded = list()
 		for value in data:
