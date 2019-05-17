@@ -13,15 +13,13 @@ import time
 fullData = pd.read_csv("dataset.csv")
 
 from keras import Sequential
-from keras.layers import Dense, BatchNormalization
+from keras.layers import Dense, BatchNormalization, Dropout
 from keras.callbacks import TensorBoard, EarlyStopping
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-
-#del fullData['duration']
 
 def encode(data, to_encode):
 	le = LabelEncoder()
@@ -45,6 +43,8 @@ fullData = encode(fullData, 'loan')
 fullData = encode(fullData, 'contact')
 fullData = encode(fullData, 'day')
 fullData = encode(fullData, 'month')
+#del fullData['day']
+#del fullData['month']
 fullData = encode(fullData, 'poutcome')
 
 def scale(data):
@@ -66,12 +66,15 @@ print(fullData)
 train_x, test_x, train_y, test_y = train_test_split(fullData, res, test_size=0.2, random_state=42, shuffle=True)
 
 model = Sequential()
-model.add(Dense(40, input_dim=len(fullData[0]), activation= "relu"))
-model.add(BatchNormalization())
-model.add(Dense(40, activation= "relu"))
-model.add(BatchNormalization())
-# model.add(Dense(50, activation= "relu"))
-# model.add(BatchNormalization())
+model.add(Dense(400, input_dim=len(fullData[0]), activation= "relu"))
+model.add(Dropout(0.4))
+
+model.add(Dense(800, activation= "relu"))
+model.add(Dropout(0.4))
+
+model.add(Dense(800, activation= "relu"))
+model.add(Dropout(0.4))
+
 model.add(Dense(1, activation= "sigmoid"))
 model.summary()
 
@@ -83,7 +86,11 @@ time = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H-%M-%S')
 
 tensorboard = TensorBoard(log_dir=os.path.join('tb', time), histogram_freq=0, write_graph=True, write_images=True)
 
-stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
+stop = EarlyStopping(monitor='val_loss', min_delta=0, patience=5, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
 
 model.fit(train_x, train_y, epochs=200000, validation_data=(test_x, test_y), callbacks=[tensorboard, stop])
+
+
+
+
 
